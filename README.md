@@ -1,0 +1,89 @@
+# rad_gsr - v1.1
+**Version:** 1.1
+
+**Requirements rad_gsr**
+[es_extended](https://github.com/ESX-Org/es_extended)
+[pNotify](https://github.com/Nick78111/pNotify)
+
+**Description**
+This script will allow players with the "police" job to run a GSR (gun shot residue) test to see if a player has shot a gun within a certain amount of time.
+
+**Features**
+- Will auto count down the timer in the database and will delete the entry once the timer is over.
+- If you shoot again while you are already in the database, it will restart the timer again.
+- Auto deletes entry from the database when the player disconnects.
+- Auto clear the database table on server restart/start.
+- Current timer set to about 60 minutes (1 Hour) I believe
+
+**Installation rad_gsr**
+- Download -
+- Put it in the `resources` directory
+- Add this to your  `server.cfg`:
+```
+start rad_gsr
+```
+
+**Integration with esx_policejob**
+
+**Find.**
+```
+local elements = {
+	{label = _U('id_card'),			value = 'identity_card'},
+	{label = _U('search'),			value = 'body_search'},
+	{label = _U('handcuff'),		value = 'handcuff'},
+	{label = _U('drag'),			value = 'drag'},
+	{label = _U('put_in_vehicle'),	value = 'put_in_vehicle'},
+	{label = _U('out_the_vehicle'),	value = 'out_the_vehicle'},
+	{label = _U('fine'),			value = 'fine'},
+	{label = _U('unpaid_bills'),	value = 'unpaid_bills'},
+```
+Insert
+```
+	{label = "GSR Test",			value = 'gsr_test'}
+```
+
+**So you get something like.**
+```
+local elements = {
+	{label = _U('id_card'),			value = 'identity_card'},
+	{label = _U('search'),			value = 'body_search'},
+	{label = _U('handcuff'),		value = 'handcuff'},
+	{label = _U('drag'),			value = 'drag'},
+	{label = _U('put_in_vehicle'),	value = 'put_in_vehicle'},
+	{label = _U('out_the_vehicle'),	value = 'out_the_vehicle'},
+	{label = _U('fine'),			value = 'fine'},
+	{label = _U('unpaid_bills'),	value = 'unpaid_bills'},
+	{label = "GSR Test",			value = 'gsr_test'}
+```
+
+**Then abit below find.**
+```
+elseif action == 'unpaid_bills' then
+	OpenUnpaidBillsMenu(closestPlayer)
+```
+
+**After that insert.**
+```
+elseif action == 'gsr_test' then
+	TriggerServerEvent('GSR:Status', GetPlayerServerId(closestPlayer))
+```
+
+**So it looks like this.**
+```
+elseif action == 'unpaid_bills' then
+	OpenUnpaidBillsMenu(closestPlayer)
+elseif action == 'gsr_test' then
+	TriggerServerEvent('GSR:Status', GetPlayerServerId(closestPlayer))
+end
+```
+
+## Legal
+rad_gsr - GSR Test
+
+Copyright (C) 2015-2018 BattleRattt and BenZoN
+
+This program Is free software: you can redistribute it And/Or modify it under the terms Of the GNU General Public License As published by the Free Software Foundation, either version 3 Of the License, Or (at your option) any later version.
+
+This program Is distributed In the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty Of MERCHANTABILITY Or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License For more details.
+
+You should have received a copy Of the GNU General Public License along with this program. If Not, see  [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/).
