@@ -1,19 +1,21 @@
 # rad_gsr - v1.1
 **Version:** 1.1
 
+Created/Updated by - BattleRattt & BenZoN
+
 **Requirements rad_gsr**
-[es_extended](https://github.com/ESX-Org/es_extended)
+[es_extended](https://github.com/ESX-Org/es_extended) & 
 [pNotify](https://github.com/Nick78111/pNotify)
 
 **Description**
 This script will allow players with the "police" job to run a GSR (gun shot residue) test to see if a player has shot a gun within a certain amount of time.
 
 **Features**
-- Will auto count down the timer in the database and will delete the entry once the timer is over.
-- If you shoot again while you are already in the database, it will restart the timer again.
-- Auto deletes entry from the database when the player disconnects.
-- Auto clear the database table on server restart/start.
-- Current timer set to about 60 minutes (1 Hour) I believe
+- When a player shoots they will automatically be marked with GSR for a certain amout of time (can change in config).
+- Police can do /gsr <id> or use the police menu if you add it using instructions below.
+- Allows player to wash off GSR when they get in water.
+- Full config to allow you to customize everything you need.
+- No database necessary
 
 **Installation rad_gsr**
 - Download -
@@ -56,7 +58,7 @@ local elements = {
 	{label = "GSR Test",			value = 'gsr_test'}
 ```
 
-**Then abit below find.**
+**Then a bit below find.**
 ```
 elseif action == 'unpaid_bills' then
 	OpenUnpaidBillsMenu(closestPlayer)
