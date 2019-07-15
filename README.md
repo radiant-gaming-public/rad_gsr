@@ -18,7 +18,7 @@ This script will allow players with the "police" job to run a GSR (gun shot resi
 - No database necessary
 
 **Installation rad_gsr**
-- Download -
+- Download -https://github.com/radiant-gaming-public/rad_gsr
 - Put it in the `resources` directory
 - Add this to your  `server.cfg`:
 ```
