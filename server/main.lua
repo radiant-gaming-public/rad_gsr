@@ -7,15 +7,19 @@ TriggerEvent('es:addCommand', 'gsr', function(source, args, user)
     local Source = source
     local xPlayer = ESX.GetPlayerFromId(Source)
     local number = tonumber(args[1])
-    if args[1] ~= nil and xPlayer.job.name == 'police' and type(number) == "number" then
-        CancelEvent()
-        local identifier = GetPlayerIdentifiers(number)[1]
-        if identifier ~= nil then
-            gsrcheck(source, identifier)
-        end
-    else
-        TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "You must be a cop")
-    end
+    if args[1] ~= nil then 
+		if xPlayer.job.name == 'police' and type(number) == "number" then
+        	CancelEvent()
+        	local identifier = GetPlayerIdentifiers(number)[1]
+        	if identifier ~= nil then
+            	gsrcheck(source, identifier)
+        	end
+    	else
+        	TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "You must be a cop")
+    	end
+	else
+		TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "Correct Usage Is: /gsr <player id>")
+	end
 end)
 
 AddEventHandler('esx:playerDropped', function(source)
@@ -51,6 +55,17 @@ function gsrcheck(source, identifier)
         TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "^2Test comes back ^*NEGATIVE(Has Not Shot)")
     end
 end
+
+RegisterServerEvent('GSR:Status2')
+AddEventHandler('GSR:Status2', function(playerid)
+    local Source = source
+    local identifier = GetPlayerIdentifiers(playerid)[1]
+    if gsrData[identifier] ~= nil then
+        TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "^1Test comes back ^*POSITIVE(Has Shot)")
+    else
+        TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "^2Test comes back ^*NEGATIVE(Has Not Shot)")
+    end
+end)
 
 ESX.RegisterServerCallback('GSR:Status', function(source, cb)
     local Source = source
