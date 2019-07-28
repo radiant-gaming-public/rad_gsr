@@ -67,7 +67,7 @@ elseif action == 'unpaid_bills' then
 **After that insert.**
 ```
 elseif action == 'gsr_test' then
-	TriggerServerEvent('GSR:Status', GetPlayerServerId(closestPlayer))
+	TriggerServerEvent('GSR:Status2', GetPlayerServerId(closestPlayer))
 ```
 
 **So it looks like this.**
@@ -75,7 +75,7 @@ elseif action == 'gsr_test' then
 elseif action == 'unpaid_bills' then
 	OpenUnpaidBillsMenu(closestPlayer)
 elseif action == 'gsr_test' then
-	TriggerServerEvent('GSR:Status', GetPlayerServerId(closestPlayer))
+	TriggerServerEvent('GSR:Status2', GetPlayerServerId(closestPlayer))
 end
 ```
 
