@@ -1,11 +1,12 @@
-# rad_gsr - v1.1
-**Version:** 1.1
+# rad_gsr - v1.2
+**Version:** 1.2
 
 Created/Updated by - BattleRattt & BenZoN
 
 **Requirements rad_gsr**
 [es_extended](https://github.com/ESX-Org/es_extended) & 
-[pNotify](https://github.com/Nick78111/pNotify)
+[mythic_progbar](https://github.com/mythicrp/mythic_progbar) & 
+[mythic_notify](https://github.com/mythicrp/mythic_notify)
 
 **Description**
 This script will allow players with the "police" job to run a GSR (gun shot residue) test to see if a player has shot a gun within a certain amount of time.
