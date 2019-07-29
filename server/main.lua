@@ -91,11 +91,22 @@ RegisterServerEvent('GSR:Status2')
 AddEventHandler('GSR:Status2', function(playerid)
     local Source = source
     local identifier = GetPlayerIdentifiers(playerid)[1]
-    if gsrData[identifier] ~= nil then
-        TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test comes back POSITIVE (Has Shot)' })
-    else
-        TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test comes back NEGATIVE (Has Not Shot)' })
-    end
+    if Config.UseCharName then
+		local nameData = getIdentity(identifier)
+		Wait(100)
+		local fullName = string.format("%s %s", nameData.firstname, nameData.lastname)
+		if gsrData[identifier] ~= nil then
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test for '..fullName..' comes back POSITIVE (Has Shot)' })
+    	else
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test for '..fullName..' comes back NEGATIVE (Has Not Shot)' })
+    	end
+	else
+    	if gsrData[identifier] ~= nil then
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test comes back POSITIVE (Has Shot)' })
+    	else
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test comes back NEGATIVE (Has Not Shot)' })
+    	end
+	end
 end)
 
 ESX.RegisterServerCallback('GSR:Status', function(source, cb)
