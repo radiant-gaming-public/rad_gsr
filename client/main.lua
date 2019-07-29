@@ -31,15 +31,31 @@ Citizen.CreateThread(function()
         if Config.waterClean and hasShot then
             ped = GetPlayerPed(-1)
             if IsEntityInWater(ped) then
-                TriggerEvent("chatMessage", "[GSR]", {255, 0, 0}, "You begin cleaning off the Gunshot Residue... stay in the water")
-                Citizen.Wait(Config.waterCleanTime)
-                if IsEntityInWater(ped) then
-                    hasShot = false
-                    TriggerServerEvent('GSR:Remove')
-                    TriggerEvent("chatMessage", "[GSR]", {255, 0, 0}, "^2You washed off all the Gunshot Residue in the water")
-                else
-                    TriggerEvent("chatMessage", "[GSR]", {255, 0, 0}, "^1You left the water too early and did not wash off the gunshot residue.")
-                end
+                exports['mythic_notify']:DoLongHudText('inform', 'You begin cleaning off the Gunshot Residue... stay in the water') 
+				Wait(100)
+				TriggerEvent("mythic_progbar:client:progress", {
+        			name = "washing_gsr",
+        			duration = Config.waterCleanTime,
+        			label = "Washing Off GSR",
+        			useWhileDead = false,
+        			canCancel = true,
+        			controlDisables = {
+            			disableMovement = false,
+            			disableCarMovement = false,
+            			disableMouse = false,
+            			disableCombat = false,
+        			},
+    			}, function(status)
+        			if not status then
+            			if IsEntityInWater(ped) then
+                    		hasShot = false
+                    		TriggerServerEvent('GSR:Remove')
+                    		exports['mythic_notify']:DoLongHudText('success', 'You washed off all the Gunshot Residue in the water')
+                		else
+                    		exports['mythic_notify']:DoLongHudText('error', 'You left the water too early and did not wash off the gunshot residue.')
+                		end
+        			end
+    			end)
             end
         end
     end
