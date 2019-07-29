@@ -46,14 +46,45 @@ AddEventHandler('GSR:SetGSR', function()
     gsrData[identifier] = os.time(os.date("!*t")) + Config.gsrTime
 end)
 
+function getIdentity(identifier)
+    local identifier = identifier
+    local result = MySQL.Sync.fetchAll("SELECT firstname, lastname FROM users WHERE identifier = @identifier", {
+        ['@identifier'] = identifier
+    })
+  if result[1] ~= nil then
+    local identity = result[1]
+
+    return {
+      firstname   = identity['firstname'],
+      lastname  = identity['lastname']
+    }
+  else
+    return {
+      firstname   = '',
+      lastname  = ''
+    }
+    end
+end
+
 function gsrcheck(source, identifier)
     local Source = source
     local identifier = identifier
-    if gsrData[identifier] ~= nil then
-		TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test comes back POSITIVE (Has Shot)' })
-    else
-		TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test comes back NEGATIVE (Has Not Shot)' })
-    end
+	if Config.UseCharName then
+		local nameData = getIdentity(identifier)
+		Wait(100)
+		local fullName = string.format("%s %s", nameData.firstname, nameData.lastname)
+		if gsrData[identifier] ~= nil then
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test for '..fullName..' comes back POSITIVE (Has Shot)' })
+    	else
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test for '..fullName..' comes back NEGATIVE (Has Not Shot)' })
+    	end
+	else
+    	if gsrData[identifier] ~= nil then
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test comes back POSITIVE (Has Shot)' })
+    	else
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test comes back NEGATIVE (Has Not Shot)' })
+    	end
+	end
 end
 
 RegisterServerEvent('GSR:Status2')
