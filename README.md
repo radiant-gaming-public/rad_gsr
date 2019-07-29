@@ -6,7 +6,9 @@ Created/Updated by - BattleRattt & BenZoN
 **Requirements rad_gsr**
 [es_extended](https://github.com/ESX-Org/es_extended) & 
 [mythic_progbar](https://github.com/mythicrp/mythic_progbar) & 
-[mythic_notify](https://github.com/mythicrp/mythic_notify)
+[mythic_notify](https://github.com/mythicrp/mythic_notify) & 
+[mysql-async](https://github.com/brouznouf/fivem-mysql-async)
+
 
 **Description**
 This script will allow players with the "police" job to run a GSR (gun shot residue) test to see if a player has shot a gun within a certain amount of time.
@@ -16,6 +18,8 @@ This script will allow players with the "police" job to run a GSR (gun shot resi
 - Police can do /gsr <id> or use the police menu if you add it using instructions below.
 - Allows player to wash off GSR when they get in water.
 - Full config to allow you to customize everything you need.
+- Config option to show the suspects name in the notification. This allows the cop to make sure they checked the right person.
+- Clean notifications and progress bar thanks to mythic_progbar and mythic_notify!
 - No database necessary
 
 **Installation rad_gsr**
