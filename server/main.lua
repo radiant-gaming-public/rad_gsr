@@ -15,10 +15,10 @@ TriggerEvent('es:addCommand', 'gsr', function(source, args, user)
             	gsrcheck(source, identifier)
         	end
     	else
-        	TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "You must be a cop")
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'You must be a cop to use the GSR test' })
     	end
 	else
-		TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "Correct Usage Is: /gsr <player id>")
+		TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Correct Usage Is: /gsr <player id>' })
 	end
 end)
 
@@ -50,9 +50,9 @@ function gsrcheck(source, identifier)
     local Source = source
     local identifier = identifier
     if gsrData[identifier] ~= nil then
-        TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "^1Test comes back ^*POSITIVE(Has Shot)")
+		TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test comes back POSITIVE (Has Shot)' })
     else
-        TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "^2Test comes back ^*NEGATIVE(Has Not Shot)")
+		TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test comes back NEGATIVE (Has Not Shot)' })
     end
 end
 
@@ -61,9 +61,9 @@ AddEventHandler('GSR:Status2', function(playerid)
     local Source = source
     local identifier = GetPlayerIdentifiers(playerid)[1]
     if gsrData[identifier] ~= nil then
-        TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "^1Test comes back ^*POSITIVE(Has Shot)")
+        TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test comes back POSITIVE (Has Shot)' })
     else
-        TriggerClientEvent("chatMessage", Source, "[GSR]", {255, 0, 0}, "^2Test comes back ^*NEGATIVE(Has Not Shot)")
+        TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test comes back NEGATIVE (Has Not Shot)' })
     end
 end)
 
