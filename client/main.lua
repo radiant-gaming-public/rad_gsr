@@ -16,7 +16,7 @@ end)
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        ped = GetPlayerPed(-1)
+        ped = PlayerPedId()
         if IsPedShooting(ped) then
             TriggerServerEvent('GSR:SetGSR', timer)
             hasShot = true
@@ -29,9 +29,9 @@ Citizen.CreateThread(function()
     while true do
         Wait(2000)
         if Config.waterClean and hasShot then
-            ped = GetPlayerPed(-1)
+            ped = PlayerPedId()
             if IsEntityInWater(ped) then
-                exports['mythic_notify']:DoLongHudText('inform', 'You begin cleaning off the Gunshot Residue... stay in the water') 
+				exports['mythic_notify']:DoCustomHudText('inform', 'You begin cleaning off the Gunshot Residue... stay in the water', 5000)
 				Wait(100)
 				TriggerEvent("mythic_progbar:client:progress", {
         			name = "washing_gsr",
@@ -50,12 +50,13 @@ Citizen.CreateThread(function()
             			if IsEntityInWater(ped) then
                     		hasShot = false
                     		TriggerServerEvent('GSR:Remove')
-                    		exports['mythic_notify']:DoLongHudText('success', 'You washed off all the Gunshot Residue in the water')
+							exports['mythic_notify']:DoCustomHudText('success', 'You washed off all the Gunshot Residue in the water', 5000)
                 		else
-                    		exports['mythic_notify']:DoLongHudText('error', 'You left the water too early and did not wash off the gunshot residue.')
+							exports['mythic_notify']:DoCustomHudText('error', 'You left the water too early and did not wash off the gunshot residue.', 5000)
                 		end
         			end
     			end)
+				Citizen.Wait(Config.waterCleanTime)
             end
         end
     end
