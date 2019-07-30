@@ -74,15 +74,15 @@ function gsrcheck(source, identifier)
 		Wait(100)
 		local fullName = string.format("%s %s", nameData.firstname, nameData.lastname)
 		if gsrData[identifier] ~= nil then
-			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test for '..fullName..' comes back POSITIVE (Has Shot)' })
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test for '..fullName..' comes back POSITIVE (Has Shot)', length = 5000 })
     	else
-			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test for '..fullName..' comes back NEGATIVE (Has Not Shot)' })
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test for '..fullName..' comes back NEGATIVE (Has Not Shot)', length = 5000 })
     	end
 	else
     	if gsrData[identifier] ~= nil then
-			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test comes back POSITIVE (Has Shot)' })
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test comes back POSITIVE (Has Shot)', length = 5000 })
     	else
-			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test comes back NEGATIVE (Has Not Shot)' })
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test comes back NEGATIVE (Has Not Shot)', length = 5000 })
     	end
 	end
 end
@@ -96,15 +96,15 @@ AddEventHandler('GSR:Status2', function(playerid)
 		Wait(100)
 		local fullName = string.format("%s %s", nameData.firstname, nameData.lastname)
 		if gsrData[identifier] ~= nil then
-			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test for '..fullName..' comes back POSITIVE (Has Shot)' })
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test for '..fullName..' comes back POSITIVE (Has Shot)', length = 5000 })
     	else
-			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test for '..fullName..' comes back NEGATIVE (Has Not Shot)' })
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test for '..fullName..' comes back NEGATIVE (Has Not Shot)', length = 5000 })
     	end
 	else
     	if gsrData[identifier] ~= nil then
-			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test comes back POSITIVE (Has Shot)' })
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'success', text = 'Test comes back POSITIVE (Has Shot)', length = 5000 })
     	else
-			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test comes back NEGATIVE (Has Not Shot)' })
+			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Test comes back NEGATIVE (Has Not Shot)', length = 5000 })
     	end
 	end
 end)
