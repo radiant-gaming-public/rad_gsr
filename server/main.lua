@@ -18,7 +18,7 @@ TriggerEvent('es:addCommand', 'gsr', function(source, args, user)
 			TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'You must be a cop to use the GSR test' })
     	end
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Correct Usage Is: /gsr <player id>' })
+		TriggerClientEvent('mythic_notify:client:SendAlert', Source, { type = 'error', text = 'Correct Usage Is: /gsr (player id)' })
 	end
 end)
 
