@@ -60,7 +60,7 @@ local elements = {
 	{label = _U('out_the_vehicle'),	value = 'out_the_vehicle'},
 	{label = _U('fine'),			value = 'fine'},
 	{label = _U('unpaid_bills'),	value = 'unpaid_bills'},
-	{label = "GSR Test",			value = 'gsr_test'}
+	{label = _U('gsr_test),			value = 'gsr_test'}
 ```
 
 **Then a bit below find.**
