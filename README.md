@@ -21,6 +21,7 @@ This script will allow players with the "police" job to run a GSR (gun shot resi
 - Config option to show the suspects name in the notification. This allows the cop to make sure they checked the right person.
 - Clean notifications and progress bar thanks to mythic_progbar and mythic_notify!
 - No database necessary
+- Weapon checklist
 
 **Installation rad_gsr**
 - Download -https://github.com/radiant-gaming-public/rad_gsr
