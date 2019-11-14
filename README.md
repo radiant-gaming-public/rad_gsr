@@ -1,5 +1,5 @@
-# rad_gsr - v1.2
-**Version:** 1.2
+# rad_gsr - v1.3
+**Version:** 1.3
 
 Created/Updated by - BattleRattt & BenZoN
 
