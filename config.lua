@@ -8,3 +8,11 @@ Config.gsrTime                  = 30 * 60           -- Change The first number o
 Config.gsrAutoRemove            = 10 * 60 * 1000    -- Change first number only, to set the auto clean up in minuets (default: 10 min).
 Config.gsrUpdateStatus          = 5 * 60 * 1000     -- Change first number only, to change how often the client updates hasFired variable dont set it to high 5-10 min should be fine. (default: 5 min).
 Config.UseCharName				= true				-- This will show the suspects name in the PASSED or FAILED notification.Allows cop to make sure they checked the right person.
+
+Config.weaponChecklist = {
+		--Get models id here : https://pastebin.com/0wwDZgkF
+		0x3656C8C1, -- stunGun
+		0x678B81B1, -- nightStick
+		0x84BD7BFD, -- crowBar
+		0x60EC506, 	-- Fire Extinguisher
+	}
