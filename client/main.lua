@@ -33,6 +33,7 @@ Citizen.CreateThread(function()
                 ignoreShooting = false
                 Citizen.Wait(Config.gsrUpdate)
             end
+			ignoreShooting = false
         end
     end
 end)
