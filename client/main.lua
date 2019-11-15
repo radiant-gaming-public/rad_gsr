@@ -19,15 +19,15 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         ped = PlayerPedId()
         if IsPedShooting(ped) then
-			local currentWeapon = GetSelectedPedWeapon(ped)
+            local currentWeapon = GetSelectedPedWeapon(ped)
             for _,k in pairs(Config.weaponChecklist) do
                 if currentWeapon == k then
                     ignoreShooting = true
                     break
                 end
             end
-			
-			if not ignoreShooting then
+            
+            if not ignoreShooting then
                 TriggerServerEvent('GSR:SetGSR', timer)
                 hasShot = true
                 ignoreShooting = false
