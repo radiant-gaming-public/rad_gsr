@@ -47,7 +47,7 @@ local elements = {
 ```
 Insert
 ```
-	{label = _U('gsr_test),			value = 'gsr_test'}
+	{label = _U('gsr_test'),			value = 'gsr_test'}
 ```
 
 **So you get something like.**
